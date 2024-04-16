@@ -1,0 +1,42 @@
+
+
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+
+
+bool pool[1000001];
+
+
+void makep(int n){
+    for (int i=0; i<n; i++)
+        pool[i]=true;
+    pool[0]=false; pool[1]=false;
+    
+    for (int i=0; i<n; i++)
+        if (pool[i])
+            for (int j=2*i; j<n; j+=i)
+                pool[j]=false;
+
+}
+
+int gcpd(int a, int b){
+    makep(min(a, b));
+    for (int i=min(a, b); i>1; i--)
+        if (pool[i] && a%i==0 && b%i==0)
+            return i;
+    return -1;
+
+}
+
+
+
+int main()
+{
+    
+    
+
+    return 0;
+}
